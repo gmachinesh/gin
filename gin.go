@@ -62,7 +62,10 @@ var modeName = DebugMode
 func init() {
 	mode := os.Getenv("GIN_MODE")
 	if mode == "" {
-		SetMode(DebugMode)
+		// Default to release mode instead of debug to avoid accidentally
+		// leaking debug output in production deployments where GIN_MODE
+		// is not explicitly set.
+		SetMode(ReleaseMode)
 	} else {
 		SetMode(mode)
 	}
