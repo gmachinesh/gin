@@ -124,6 +124,8 @@ func debugPrintWARNINGNew() {
 	debugPrint(debugWarningNew)
 }
 
+// nameOfFunction returns the name of the function f.
+// This is used primarily for debug route printing to show handler names.
 func nameOfFunction(f any) string {
 	return runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name()
 }
